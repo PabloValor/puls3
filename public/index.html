@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <title>Puls3</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/estilos.css">
+
+        <script src="lib/modernizr-2.6.2.min.js"></script>
+        <script src="lib/angular.min.js"></script>
+        <script src="lib/angular-resource.min.js"></script>
+        <script src="lib/socket.io.js"></script>
+
+    </head>
+    <body ng-app="puls3">
+
+        <header>
+            <figure id="header_logo">
+                <a href=""><img src="img/logo.png" alt="logo"></a>
+            </figure>
+            <div id="header_titulo">
+                <h2>Puls3 - Dolor Sit amet melas</h2>
+                <nav>
+                    <ul>
+                        <a href="#"><li>Home</li></a>
+                        <a href="https://github.com/agreencow/puls3"><li>GitHub</li></a>
+                    </ul>
+                </nav>
+            </div>
+            <figure id="header_user">
+               <a href=""><img src="img/user.jpg"></a> 
+            </figure>
+        </header>   
+
+        <section id="contenido">
+
+            <aside ng-controller="ArticleNew">
+                <div id="aside_header">
+                    <span aria-hidden="true" class="icon-arrow-down"></span>
+                    <h3>Alorium menu plus</h3>
+                </div>
+                <div id="aside_body">
+                    <p>
+                       <input id="title" type="text" placeholder="Titulo" ng-model="article.title"/>
+                    </p>
+                    <p>
+                       <input id="tag" type="text" placeholder="Tag" ng-model="article.tag"/>
+                    </p>
+                    <p>
+                       <input id="content" type="text" placeholder="Contenido" ng-model="article.content"/>
+                    </p>                    
+                    <p>
+                       <button id="create" ng-click="save()">Crear</button>
+                    </p>   
+                </div>
+            </aside>
+
+            <div ng-view>
+
+            </div>
+
+        </section>
+        <script src="js/services.js"></script>
+        <script src="js/controllers.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>

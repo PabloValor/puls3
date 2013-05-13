@@ -1,10 +1,9 @@
 var express = require('express'),
-	swig    = require('swig'),
 	cons    = require('consolidate'),
 	fs      = require('fs'),
 	uuid    = require('node-uuid');
 
-var env = "production";
+var env = "dev";
 
 var app      = express(),
 	baseData = fs.readFileSync('./base-data.json').toString(),
@@ -12,15 +11,6 @@ var app      = express(),
 	io       = require('socket.io').listen(server);
 
 var data = JSON.parse(baseData);
-
-swig.init({
-	cache : false
-});
-
-// View engine
-app.engine('.html', cons.swig);
-app.set('view engine', 'html');
-app.set('views', './app/views');
 
 // Add POST, PUT, DELETE methods to the app
 app.use(express.bodyParser());
@@ -31,7 +21,7 @@ app.use(express.methodOverride());
 app.use( express.static('./public') );
 
 // Routes
-app.get('/articles/all', function(req, res){
+app.get('/articles', function(req, res){
 	res.send(data);
 });
 
@@ -50,13 +40,13 @@ app.post('/articles', function (req, res){
 	res.send(200, {status:"Ok", id: req.body.id});
 });
 
-app.put('/articles/:id', function (req, res){
+app.put('/articles', function (req, res){
 	var article;
 
 	for (var i = data.length - 1; i >= 0; i--) {
 		article = data[i];
 
-		if(article.id === req.params.id){
+		if(article.id === req.body.id){
 			data[i] = req.body;
 		}
 	}
