@@ -2,7 +2,7 @@
   "name": "pulse",
   "version": "0.0.1",
   "dependencies": {
-    "express": "3.2.2",
+    "express": "~3.4.0",
     "consolidate": "~0.9.1",
     "swig": "~0.13.5",
     "socket.io": "~0.9.14",
